@@ -3,14 +3,6 @@
 
 typedef unsigned char	u8_t;
 
-
-typedef struct {
-	u8_t Length;
-	u8_t From;
-    u8_t Where;
-    u8_t* Message;
-} Messages;
-
 typedef enum
 {
 	PRT_OK 	   	    = 0x00U,

@@ -2,6 +2,13 @@
 #include <string.h>
 #include "protokol_translate.h"
 
+typedef struct {
+	u8_t Length;
+	u8_t From;
+    u8_t Where;
+    u8_t* Message;
+} Messages;
+
 static Messages InputMessages = {.Length= 0, .From= 0, .Where= 0, .Message= NULL};
 
 static const int PROTOKOL_HEADER_LENGTH = 7;
@@ -32,6 +39,7 @@ u8_t _cal_crc_table(u8_t *ptr, int len)
 	for (int i = 0; i<=len; i++)
     {
         crc = crc_table[crc ^ (*ptr++)];
+        InputMessages.Message[i] = *ptr;
     }
     return (crc);
 };
